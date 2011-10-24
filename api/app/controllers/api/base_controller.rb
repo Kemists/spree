@@ -22,7 +22,7 @@ class Api::BaseController < Spree::BaseController
     if @object.save
       render :text => "Resource created\n", :status => 201, :location => object_url
     else
-      respond_with(@object.errors, :status => 422)
+      respond_with(@object, :status => 422)
     end
   end
 
@@ -30,7 +30,7 @@ class Api::BaseController < Spree::BaseController
     if @object.update_attributes(params[object_name])
       render :nothing => true
     else
-      respond_with(@object.errors, :status => 422)
+      respond_with(@object, :status => 422)
     end
   end
 
